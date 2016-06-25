@@ -6,6 +6,8 @@ using ArtNet;
 
 public class dye : MonoBehaviour {
 
+	public byte[] DMXData = new byte[512];
+
 	public List<GameObject> climbingholds = new List<GameObject>();
 
 	int toggle = 0; 
@@ -71,7 +73,7 @@ public class dye : MonoBehaviour {
 
 		for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / fadingTime){
 
-			byte[] DMXData = new byte[512];
+
 
 			DMXData [hold_nr * 3 + 0] = (byte)(Mathf.Lerp(prevRed, fadeToColor[0], t)*255);
 			DMXData [hold_nr * 3 + 1] = (byte)(Mathf.Lerp(prevGreen, fadeToColor[1], t)*255);

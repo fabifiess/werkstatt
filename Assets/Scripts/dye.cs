@@ -18,6 +18,10 @@ public class dye : MonoBehaviour {
 	ArtNet.Engine ArtEngine; 
 
 	void Start () {
+		for (int i = 0; i < DMXData.Length; i++) {
+			DMXData [i] = (byte)(0);
+		}
+
 		// Artnet sender / client
 		ArtEngine = new ArtNet.Engine("Open DMX Etheret", "192.168.0.90");
 		ArtEngine.Start ();
@@ -33,7 +37,7 @@ public class dye : MonoBehaviour {
 		// get the color of the Movie texture at that position
 		// render this color to the virtual stone
 
-
+		sendDmxData ();
 
 
 		if (Input.GetKeyDown("c")){
@@ -79,7 +83,7 @@ public class dye : MonoBehaviour {
 			DMXData [hold_nr * 3 + 1] = (byte)(Mathf.Lerp(prevGreen, fadeToColor[1], t)*255);
 			DMXData [hold_nr * 3 + 2] = (byte)(Mathf.Lerp(prevBlue, fadeToColor[2], t)*255);
 
-			ArtEngine.SendDMX (0, DMXData, DMXData.Length);
+
 
 			yield return null;
 		}
@@ -101,6 +105,9 @@ public class dye : MonoBehaviour {
 			climbingholds[hold_nr].GetComponent<Renderer> ().material.color = newColor;
 			yield return null;
 		}
+	}
+	void sendDmxData(){
+		ArtEngine.SendDMX (0, DMXData, DMXData.Length);
 	}
 
 	/*

@@ -45,8 +45,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\dye.cs" />
-     <Compile Include="Assets\Scripts\oscControl.cs" />
+     <Compile Include="Assets\Scripts\Arduino_in.cs" />
+     <Compile Include="Assets\Scripts\DMXout.cs" />
+     <Compile Include="Assets\Scripts\OSCin.cs" />
      <None Include="Assets\Shaders\UnlitAlpha.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

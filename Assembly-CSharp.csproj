@@ -45,10 +45,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\PlayVideo.cs" />
      <Compile Include="Assets\Scripts\dye.cs" />
-     <Compile Include="Assets\pickColor.cs" />
-     <Compile Include="Assets\webcam.cs" />
+     <Compile Include="Assets\Scripts\oscControl.cs" />
      <None Include="Assets\Shaders\UnlitAlpha.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
@@ -62,6 +60,10 @@
  <Reference Include="Liteshared">
  <HintPath>/Users/MXO-GFX/Documents/Github/werkstatt/Assets/Plugins/ArtNetlib/Liteshared.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{501E7B4A-D95D-24C9-D884-1328C373C1BD}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

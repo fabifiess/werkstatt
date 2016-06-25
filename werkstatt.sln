@@ -1,6 +1,8 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
+Project("{90A85398-67DB-3F9D-B51A-A2514624FAA9}") = "werkstatt", "Assembly-CSharp-firstpass.csproj", "{501E7B4A-D95D-24C9-D884-1328C373C1BD}"
+EndProject
 Project("{90A85398-67DB-3F9D-B51A-A2514624FAA9}") = "werkstatt", "Assembly-CSharp.csproj", "{C46EC90A-ACC4-D82C-EFAD-CFF1E46F7E0C}"
 EndProject
 Global
@@ -9,6 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{501E7B4A-D95D-24C9-D884-1328C373C1BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{501E7B4A-D95D-24C9-D884-1328C373C1BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{501E7B4A-D95D-24C9-D884-1328C373C1BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{501E7B4A-D95D-24C9-D884-1328C373C1BD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C46EC90A-ACC4-D82C-EFAD-CFF1E46F7E0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C46EC90A-ACC4-D82C-EFAD-CFF1E46F7E0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C46EC90A-ACC4-D82C-EFAD-CFF1E46F7E0C}.Release|Any CPU.ActiveCfg = Release|Any CPU

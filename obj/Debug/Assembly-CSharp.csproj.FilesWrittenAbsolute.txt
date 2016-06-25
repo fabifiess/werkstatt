@@ -36,3 +36,5 @@
 /Users/MXO-GFX/Documents/Github/werkstatt/Temp/bin/Debug/Unity.CecilTools.dll
 /Users/MXO-GFX/Documents/Github/werkstatt/Temp/bin/Debug/Mono.Cecil.Pdb.dll
 /Users/MXO-GFX/Documents/Github/werkstatt/Temp/bin/Debug/Mono.Cecil.Mdb.dll
+/Users/MXO-GFX/Documents/Github/werkstatt/Temp/bin/Debug/Assembly-CSharp-firstpass.dll
+/Users/MXO-GFX/Documents/Github/werkstatt/Temp/bin/Debug/Assembly-CSharp-firstpass.dll.mdb

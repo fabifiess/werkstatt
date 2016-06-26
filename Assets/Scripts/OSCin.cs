@@ -14,7 +14,7 @@ public class OSCin : MonoBehaviour {
 	private string thatIpAddress;
 	private int thatPort;
 
-	private float prevTrigger = 0.0f;
+	// private float prevTrigger = 0.0f;
 	public float duration = 0.5f;
 	private float littleTrigger;
 	private float bigTrigger;

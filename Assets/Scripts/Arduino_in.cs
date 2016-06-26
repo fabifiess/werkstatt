@@ -5,25 +5,27 @@ using System.IO.Ports;
 
 public class Arduino_in : MonoBehaviour {
 	public GameObject movingobject;
-	// Smooth Transition
-	private Vector3 newPosition;
+    public string SerialPort = "COM9";
+    public int baudrate = 9600;
+    // Smooth Transition
+    private Vector3 newPosition;
 	// Animation
 	Vector3 positionA = new Vector3 (0, 1, 0);
 	Vector3 positionB = new Vector3 (9, 6, 9);
 
-	// Serial
-	SerialPort sp = new SerialPort("/dev/tty.usbmodem1421",9600);
-	public int smoothFlicker=3;
+	private int smoothFlicker=3;
 	private int countSameMessages =0;
 	private string prevMessage="0";
 
-
-	void Start () {
+    private SerialPort sp;
+    
+    void Start () {
 		// Animation
 		newPosition = movingobject.transform.position;
 
-		// Serial
-		sp.Open ();
+        // Serial
+        sp = new SerialPort(SerialPort, baudrate);
+        sp.Open ();
 		sp.ReadTimeout = 20;
 	}
 	

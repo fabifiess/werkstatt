@@ -8,12 +8,21 @@ public class DMXout : MonoBehaviour {
 
 	public byte[] DMXData = new byte[512];
 
-	public List<GameObject> climbingholds = new List<GameObject>();
+	//public List<GameObject> climbingholds = new List<GameObject>();
+	public GameObject steinB;
+	public GameObject steinC;
 
 	int toggle = 0; 
 	// private float[] hue_A = {1.0f, 0.0f, 0.0f};
 	private float[] hue_B = {0.5f, 1.0f, 1.0f};
 	private float[] hue_C = {1.0f, 0.0f, 1.0f};
+	public float[] white = {1.0f, 1.0f, 1.0f};
+	public float[] cyan = {0.0f, 1.0f, 1.0f};
+	public float[] darkcyan = {0.0f, 0.7f, 0.7f};
+	public float[] yellow = {1.0f, 1.0f, 0.0f};
+	public float[] violet = {1.0f, 0.0f, 1.0f};
+	public float[] black = {0.0f, 0.0f, 0.0f};
+
 
 	ArtNet.Engine ArtEngine; 
 
@@ -45,87 +54,60 @@ public class DMXout : MonoBehaviour {
 
 			// fade to value fadeTo(aValue, aTime);
 			if (toggle % 2 == 1) {
-				StartCoroutine (FadeRender (0, hue_C));
-				StartCoroutine (FadeDmx (0, hue_C));
+				StartCoroutine (fadeColor (steinC, 0, hue_C, 2.0f));
 			} else {
-				StartCoroutine (FadeRender (0, hue_B));
-				StartCoroutine (FadeDmx (0, hue_B));
-			}
-		}
-
-		if (Input.GetKeyDown("b")){
-			toggle++;
-
-			// fade to value fadeTo(aValue, aTime);
-			if (toggle % 2 == 1) {
-				StartCoroutine (FadeRender (1, hue_C));
-				StartCoroutine (FadeDmx (1, hue_C));
-			} else {
-				StartCoroutine (FadeRender (1, hue_B));
-				StartCoroutine (FadeDmx (1, hue_B));
+				StartCoroutine (fadeColor (steinC, 0, hue_B, 2.0f));
 			}
 		}
 	}
 
-
-
-	IEnumerator FadeDmx(int hold_nr, float [] fadeToColor){
-		float fadingTime = 2.0f;
-		float prevRed = climbingholds[hold_nr].GetComponent<Renderer> ().material.color.r;
-		float prevGreen = climbingholds[hold_nr].GetComponent<Renderer> ().material.color.g;
-		float prevBlue = climbingholds[hold_nr].GetComponent<Renderer> ().material.color.b;
+	public IEnumerator fadeColor(GameObject gameobj, int DMX_startAddress, float [] fadeToColor, float fadingTime){
+		float prevRed = gameobj.GetComponent<Renderer> ().material.color.r;
+		float prevGreen = gameobj.GetComponent<Renderer> ().material.color.g;
+		float prevBlue = gameobj.GetComponent<Renderer> ().material.color.b;
 
 		for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / fadingTime){
 
+			DMXData [DMX_startAddress] = (byte)(Mathf.Lerp(prevRed, fadeToColor[0], t)*255);
+			DMXData [DMX_startAddress + 1] = (byte)(Mathf.Lerp(prevGreen, fadeToColor[1], t)*255);
+			DMXData [DMX_startAddress + 2] = (byte)(Mathf.Lerp(prevBlue, fadeToColor[2], t)*255);
 
-
-			DMXData [hold_nr * 3 + 0] = (byte)(Mathf.Lerp(prevRed, fadeToColor[0], t)*255);
-			DMXData [hold_nr * 3 + 1] = (byte)(Mathf.Lerp(prevGreen, fadeToColor[1], t)*255);
-			DMXData [hold_nr * 3 + 2] = (byte)(Mathf.Lerp(prevBlue, fadeToColor[2], t)*255);
-
-
-
-			yield return null;
-		}
-	}
-
-	IEnumerator FadeRender(int hold_nr, float [] fadeToColor){
-		float fadingTime = 2.0f;
-		float prevRed = climbingholds[hold_nr].GetComponent<Renderer> ().material.color.r;
-		float prevGreen = climbingholds[hold_nr].GetComponent<Renderer> ().material.color.g;
-		float prevBlue = climbingholds[hold_nr].GetComponent<Renderer> ().material.color.b;
-
-		for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / fadingTime){
 			Color newColor = new Color(
 				Mathf.Lerp(prevRed, fadeToColor[0], t),
 				Mathf.Lerp(prevGreen, fadeToColor[1], t),
 				Mathf.Lerp(prevBlue, fadeToColor[2], t),
 				1
 			);
-			climbingholds[hold_nr].GetComponent<Renderer> ().material.color = newColor;
+			gameobj.GetComponent<Renderer> ().material.color = newColor;
+
 			yield return null;
 		}
+		/*
+		DMXData [DMX_startAddress] = (byte)(fadeToColor[0]);
+		DMXData [DMX_startAddress + 1] = (byte)(fadeToColor[1]);
+		DMXData [DMX_startAddress + 2] = (byte)(fadeToColor[2]);
+		*/
 	}
+
+
+
+	public IEnumerator setColor(GameObject gameobj, int DMX_startAddress, float [] setToColor){
+
+		DMXData [DMX_startAddress] = (byte)setToColor[0];
+		DMXData [DMX_startAddress + 1] = (byte)setToColor[1];
+		DMXData [DMX_startAddress + 2] = (byte)setToColor[2];
+
+		Color newColor = new Color(setToColor[0], setToColor[1], setToColor[2]);
+		gameobj.GetComponent<Renderer> ().material.color = newColor;
+
+		yield return null;
+	}
+
+
+
 	void sendDmxData(){
 		ArtEngine.SendDMX (0, DMXData, DMXData.Length);
 	}
 
-	/*
-	void renderColor (float[] newColor){
-		Color color2paint = new Color (newColor[0], newColor[1], newColor[2]);
-		climbingholds[0].GetComponent<Renderer>().material.color = color2paint;
-	}
-	*/
 
-	/*
-	void sendDMX(float[] newColor){
-		byte[] DMXData = new byte[512];
-
-		DMXData [0] = (byte)(newColor[0]*255);
-		DMXData [1] = (byte)(newColor[1]*255);
-		DMXData [2] = (byte)(newColor[2]*255);
-
-		ArtEngine.SendDMX (0, DMXData, DMXData.Length);
-	}
-	*/
 }

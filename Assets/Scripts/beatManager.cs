@@ -4,18 +4,15 @@ using System.Collections.Generic;
 
 public class beatManager : MonoBehaviour {
 	public List<GameObject> triggers = new List<GameObject>(); 
-	public GameObject trigger1;
-	public GameObject trigger2;
-	public GameObject trigger3;
-	public GameObject trigger4;
-	public GameObject trigger5;
+	public DMXout dmxOut;
+	public int DMX_lamp_startAddress = 12;
 
 	public GameObject LedStripe;
 
 	private GameObject hotTrigger;
 
 	void Start () {
-	
+		hotTrigger=triggers[0];
 	}
 	
 	// Update is called once per frame
@@ -42,6 +39,9 @@ public class beatManager : MonoBehaviour {
 		if (triggeredObject == hotTrigger.name) {
 			hotTrigger.GetComponent<Renderer> ().material.color = Color.cyan;
 			LedStripe.GetComponent<Renderer> ().material.color = Color.cyan;
+			dmxOut.DMXData [DMX_lamp_startAddress] = (byte)(255);
+			dmxOut.DMXData [DMX_lamp_startAddress+1] = (byte)(255);
+			dmxOut.DMXData [DMX_lamp_startAddress+2] = (byte)(255);
 		}	
 	}
 
@@ -49,6 +49,9 @@ public class beatManager : MonoBehaviour {
 		if (triggeredObject == hotTrigger.name) {
 			hotTrigger.GetComponent<Renderer> ().material.color = Color.white;
 			LedStripe.GetComponent<Renderer> ().material.color = Color.white;
+			dmxOut.DMXData [DMX_lamp_startAddress] = (byte)(0);
+			dmxOut.DMXData [DMX_lamp_startAddress+1] = (byte)(0);
+			dmxOut.DMXData [DMX_lamp_startAddress+2] = (byte)(0);
 		}
 	}
 

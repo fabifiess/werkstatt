@@ -30,11 +30,12 @@ public class Arduino_in_FoenBtn : MonoBehaviour {
 		// Serial
 		sp.Open ();
 		sp.ReadTimeout = 20;
-
 		StartCoroutine (dmxOut.fadeColor (foen_lamp, DMX_lamp_startAddress, dmxOut.darkcyan, 0.5f));
+
 	}
 
 	void Update(){
+
 		// Serial
 		if(sp.IsOpen){
 			try{

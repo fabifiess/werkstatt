@@ -8,6 +8,7 @@ public class OSCin : MonoBehaviour {
 	
 	private Dictionary<string, ServerLog> servers;
 	public AudioSource audio_schliff;
+	public GameObject schleif_lamp;
 	public DMXout dmxOut;
 	public int DMX_lamp_startAddress = 6;
 	public int DMX_feedback_address = 120;
@@ -36,6 +37,8 @@ public class OSCin : MonoBehaviour {
 		OSCHandler.Instance.Init(thisPort, thatIpAddress, thatPort); //init OSC
 		servers = new Dictionary<string, ServerLog>();
 
+		StartCoroutine (dmxOut.fadeColor (schleif_lamp, DMX_lamp_startAddress, dmxOut.darkcyan, 0.5f));
+
 	}
 
 	// NOTE: The received messages at each server are updated here
@@ -45,9 +48,7 @@ public class OSCin : MonoBehaviour {
 			currentTime = Time.time;
 			if ((currentTime - startTime) > 3) {
 				dmxOut.DMXData [DMX_feedback_address] = (byte)(0);
-				dmxOut.DMXData [DMX_lamp_startAddress] = (byte)(0);
-				dmxOut.DMXData [DMX_lamp_startAddress+1] = (byte)(0);
-				dmxOut.DMXData [DMX_lamp_startAddress+2] = (byte)(0);
+				StartCoroutine (dmxOut.fadeColor (schleif_lamp, DMX_lamp_startAddress, dmxOut.darkcyan, 0.5f));
 				inAction = false;
 			}
 		}
@@ -124,11 +125,10 @@ public class OSCin : MonoBehaviour {
 
 	void schleifAction (){
 		audio_schliff.Play ();
-		dmxOut.DMXData [DMX_feedback_address] = (byte)(100);
+
 		startTime = Time.time;
 		inAction = true;
-		dmxOut.DMXData [DMX_lamp_startAddress] = (byte)(255);
-		dmxOut.DMXData [DMX_lamp_startAddress+1] = (byte)(255);
-		dmxOut.DMXData [DMX_lamp_startAddress+2] = (byte)(255);
+		dmxOut.DMXData [DMX_feedback_address] = (byte)(100);
+		StartCoroutine (dmxOut.fadeColor (schleif_lamp, DMX_lamp_startAddress, dmxOut.white, 0.5f));
 	}
 }

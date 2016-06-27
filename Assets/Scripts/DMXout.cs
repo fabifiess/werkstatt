@@ -18,7 +18,8 @@ public class DMXout : MonoBehaviour {
 	private float[] hue_C = {1.0f, 0.0f, 1.0f};
 	public float[] white = {1.0f, 1.0f, 1.0f};
 	public float[] cyan = {0.0f, 1.0f, 1.0f};
-	public float[] darkcyan = {0.0f, 0.7f, 0.7f};
+	public float[] darkcyan = {0.0f, 0.6f, 0.6f};
+	public float[] dark = {0.1f, 0.1f, 0.1f};
 	public float[] yellow = {1.0f, 1.0f, 0.0f};
 	public float[] violet = {1.0f, 0.0f, 1.0f};
 	public float[] black = {0.0f, 0.0f, 0.0f};
@@ -88,21 +89,6 @@ public class DMXout : MonoBehaviour {
 		DMXData [DMX_startAddress + 2] = (byte)(fadeToColor[2]);
 		*/
 	}
-
-
-
-	public IEnumerator setColor(GameObject gameobj, int DMX_startAddress, float [] setToColor){
-
-		DMXData [DMX_startAddress] = (byte)setToColor[0];
-		DMXData [DMX_startAddress + 1] = (byte)setToColor[1];
-		DMXData [DMX_startAddress + 2] = (byte)setToColor[2];
-
-		Color newColor = new Color(setToColor[0], setToColor[1], setToColor[2]);
-		gameobj.GetComponent<Renderer> ().material.color = newColor;
-
-		yield return null;
-	}
-
 
 
 	void sendDmxData(){

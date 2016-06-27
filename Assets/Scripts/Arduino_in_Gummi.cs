@@ -7,6 +7,7 @@ using System.IO.Ports;
 public class Arduino_in_Gummi : MonoBehaviour {
 
 	public AudioSource hauptstueck;
+	public GameObject gummi_lamp;
 
 	public string serialport = "/dev/cu.usbmodem1441";
 	SerialPort sp;
@@ -32,6 +33,7 @@ public class Arduino_in_Gummi : MonoBehaviour {
 		// Serial
 		sp.Open ();
 		sp.ReadTimeout = 20;
+		StartCoroutine (dmxOut.fadeColor (gummi_lamp, DMX_lamp_startAddress, dmxOut.darkcyan, 0.5f));
 	}
 
 	void Update(){
@@ -51,12 +53,8 @@ public class Arduino_in_Gummi : MonoBehaviour {
 		if (inAction == true) {
 			if ((currentTime - startTime) > 0.5) {
 				hauptstueck.pitch = 1.0f;
-				dmxOut.DMXData [DMX_lamp_startAddress] = (byte)(0);
-				dmxOut.DMXData [DMX_lamp_startAddress+1] = (byte)(0);
-				dmxOut.DMXData [DMX_lamp_startAddress+2] = (byte)(0);
+				StartCoroutine (dmxOut.fadeColor (gummi_lamp, DMX_lamp_startAddress, dmxOut.darkcyan, 0.5f));
 				inAction = false;
-
-
 			}
 		}
 
@@ -95,9 +93,7 @@ public class Arduino_in_Gummi : MonoBehaviour {
 				inAction = true;
 				hauptstueck.pitch = tonhoehe;
 				//print("Pitch: " + hauptstueck.pitch);
-				dmxOut.DMXData [DMX_lamp_startAddress] = (byte)(255);
-				dmxOut.DMXData [DMX_lamp_startAddress+1] = (byte)(255);
-				dmxOut.DMXData [DMX_lamp_startAddress+2] = (byte)(255);
+				StartCoroutine (dmxOut.fadeColor (gummi_lamp, DMX_lamp_startAddress, dmxOut.white, 0.5f));
 			}
 
 		}

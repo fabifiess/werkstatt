@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class beatManager : MonoBehaviour {
 	public List<GameObject> triggers = new List<GameObject>(); 
 	public DMXout dmxOut;
-	public int DMX_lamp_startAddress = 12;
+	public int DMX_lamp_startAddress = 124;
 
 	public GameObject LedStripe;
 
@@ -17,9 +17,10 @@ public class beatManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Time.time < 62) {
+		if (Time.time < 600) {
 			hotTrigger = triggers[0];
 		}
+		/*
 		else if (Time.time >= 62 && Time.time < 135) {
 			hotTrigger = triggers[1];
 		}
@@ -32,6 +33,7 @@ public class beatManager : MonoBehaviour {
 		else if (Time.time >= 230) {
 			hotTrigger = triggers[4];
 		}
+		*/
 	}
 
 
@@ -39,9 +41,12 @@ public class beatManager : MonoBehaviour {
 		if (triggeredObject == hotTrigger.name) {
 			hotTrigger.GetComponent<Renderer> ().material.color = Color.cyan;
 			LedStripe.GetComponent<Renderer> ().material.color = Color.cyan;
+		
 			dmxOut.DMXData [DMX_lamp_startAddress] = (byte)(255);
 			dmxOut.DMXData [DMX_lamp_startAddress+1] = (byte)(255);
 			dmxOut.DMXData [DMX_lamp_startAddress+2] = (byte)(255);
+		
+			StartCoroutine (dmxOut.fadeColor (LedStripe, DMX_lamp_startAddress, dmxOut.white, 0.1f));
 		}	
 	}
 
@@ -49,9 +54,11 @@ public class beatManager : MonoBehaviour {
 		if (triggeredObject == hotTrigger.name) {
 			hotTrigger.GetComponent<Renderer> ().material.color = Color.white;
 			LedStripe.GetComponent<Renderer> ().material.color = Color.white;
-			dmxOut.DMXData [DMX_lamp_startAddress] = (byte)(0);
-			dmxOut.DMXData [DMX_lamp_startAddress+1] = (byte)(0);
-			dmxOut.DMXData [DMX_lamp_startAddress+2] = (byte)(0);
+		
+			dmxOut.DMXData [DMX_lamp_startAddress] = (byte)(30);
+			dmxOut.DMXData [DMX_lamp_startAddress+1] = (byte)(30);
+			dmxOut.DMXData [DMX_lamp_startAddress+2] = (byte)(30);
+
 		}
 	}
 

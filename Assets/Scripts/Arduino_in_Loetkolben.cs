@@ -9,6 +9,7 @@ public class Arduino_in_Loetkolben : MonoBehaviour {
 	SerialPort sp;
 
 	public AudioSource audio_loetkolben;
+	public GameObject loetkolben_lamp;
 
 	public DMXout dmxOut;
 	public int DMX_lamp_startAddress = 15;
@@ -27,6 +28,7 @@ public class Arduino_in_Loetkolben : MonoBehaviour {
 		// Serial
 		sp.Open ();
 		sp.ReadTimeout = 20;
+		StartCoroutine (dmxOut.fadeColor (loetkolben_lamp, DMX_lamp_startAddress, dmxOut.darkcyan, 0.5f));
 	}
 
 	void Update(){
@@ -45,9 +47,7 @@ public class Arduino_in_Loetkolben : MonoBehaviour {
 
 			if ((currentTime - startTime) > 3) {
 				dmxOut.DMXData [DMX_feedback_address] = (byte)(0);
-				dmxOut.DMXData [DMX_lamp_startAddress] = (byte)(0);
-				dmxOut.DMXData [DMX_lamp_startAddress+1] = (byte)(0);
-				dmxOut.DMXData [DMX_lamp_startAddress+2] = (byte)(0);
+				StartCoroutine (dmxOut.fadeColor (loetkolben_lamp, DMX_lamp_startAddress, dmxOut.darkcyan, 0.5f));
 				inAction = false;
 			}
 		}
@@ -69,12 +69,10 @@ public class Arduino_in_Loetkolben : MonoBehaviour {
 			//print ("Lötkolben Input 1");
 			audio_loetkolben.Play ();
 			dmxOut.DMXData [DMX_feedback_address] = (byte)(255);
-			dmxOut.DMXData [DMX_lamp_startAddress] = (byte)(255);
-			dmxOut.DMXData [DMX_lamp_startAddress+1] = (byte)(255);
-			dmxOut.DMXData [DMX_lamp_startAddress+2] = (byte)(255);
+			StartCoroutine (dmxOut.fadeColor (loetkolben_lamp, DMX_lamp_startAddress, dmxOut.white, 0.5f));
 			startTime = Time.time;
 			inAction = true;
 
-			}
+		}
 	}
 }  

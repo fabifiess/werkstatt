@@ -8,6 +8,7 @@ public class Arduino_in_Bohrer : MonoBehaviour {
 	SerialPort sp;
 
 	public AudioSource audio_bohrer;
+	public GameObject bohrer_lamp;
 
 	public DMXout dmxOut;
 	public int DMX_lamp_startAddress = 39;
@@ -29,6 +30,7 @@ public class Arduino_in_Bohrer : MonoBehaviour {
 		// Serial
 		sp.Open ();
 		sp.ReadTimeout = 20;
+		StartCoroutine (dmxOut.fadeColor (bohrer_lamp, DMX_lamp_startAddress, dmxOut.darkcyan, 0.5f));
 	}
 
 	void Update(){
@@ -45,12 +47,10 @@ public class Arduino_in_Bohrer : MonoBehaviour {
 		if (inAction == true) {
 			currentTime = Time.time;
 
-			if ((currentTime - startTime) > 1.5f) {
+			if ((currentTime - startTime) > 1.0f) {
 				Debug.Log ("Bohrer aus");
 				dmxOut.DMXData [DMX_feedback_address] = (byte)(0);
-				dmxOut.DMXData [DMX_lamp_startAddress] = (byte)(0);
-				dmxOut.DMXData [DMX_lamp_startAddress+1] = (byte)(0);
-				dmxOut.DMXData [DMX_lamp_startAddress+2] = (byte)(0);
+				StartCoroutine (dmxOut.fadeColor (bohrer_lamp, DMX_lamp_startAddress, dmxOut.darkcyan, 0.5f));
 				inAction = false;
 			}
 		}
@@ -61,27 +61,18 @@ public class Arduino_in_Bohrer : MonoBehaviour {
 		// Serial
 		message = message.Trim ();
 		receivedVal = System.Int32.Parse(message);
-
-		if (prevReceivedVal < 0) {
-			prevReceivedVal = receivedVal;
-			Debug.Log ("Bohrer -1");
-		} else {
-			if (receivedVal > prevReceivedVal + 30) {
-				//print ("Bohrer Input 1");
-				audio_bohrer.Play ();
-
-				Debug.Log ("Bohrer an");
-				dmxOut.DMXData [DMX_feedback_address] = (byte)(255);
-				dmxOut.DMXData [DMX_lamp_startAddress] = (byte)(255);
-				dmxOut.DMXData [DMX_lamp_startAddress+1] = (byte)(255);
-				dmxOut.DMXData [DMX_lamp_startAddress+2] = (byte)(255);
-				startTime = Time.time;
-				inAction = true;
-			}
-		}
+		Debug.Log ("receivedVal: " + receivedVal);
 
 
+		//print ("Bohrer Input 1");
+		audio_bohrer.Play ();
 
+		// Debug.Log ("receivedVal: " + receivedVal);
+		dmxOut.DMXData [DMX_feedback_address] = (byte)(155);
+		StartCoroutine (dmxOut.fadeColor (bohrer_lamp, DMX_lamp_startAddress, dmxOut.white, 0.5f));
+		prevReceivedVal = receivedVal;
+		startTime = Time.time;
+		inAction = true;
 	}
 }  
 

@@ -1,17 +1,19 @@
-int btn = 3;
-int prevVal = 0; 
 
+boolean toggle = false;
 void setup() {
   Serial.begin(9600);
-  pinMode(btn, INPUT);
 }
 
 void loop() {
-  int val = digitalRead(btn);
-  if(val != prevVal){
-    Serial.println(val);
-    delay(100);
-    prevVal = val;
-  } 
-  delay(100);
+
+  if(toggle == false){
+    toggle = true;
+    Serial.println(1);
+  }
+  else{
+    toggle = false;
+    Serial.println(0);    
+  }
+  
+  delay(4000);
 }

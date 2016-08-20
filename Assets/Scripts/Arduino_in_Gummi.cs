@@ -47,7 +47,7 @@ public class Arduino_in_Gummi : MonoBehaviour {
 			}
 		}
 
-		Debug.Log("upd Pitch: " + hauptstueck.pitch);
+		//Debug.Log("upd Pitch: " + hauptstueck.pitch);
 
 		currentTime = Time.time;
 		if (inAction == true) {

@@ -9,7 +9,7 @@ public class DMXout : MonoBehaviour {
 	public byte[] DMXData = new byte[512];
 
 	//public List<GameObject> climbingholds = new List<GameObject>();
-	public GameObject steinB;
+	//public GameObject steinB;
 	public GameObject steinC;
 
 	int toggle = 0; 
@@ -68,6 +68,7 @@ public class DMXout : MonoBehaviour {
 		float prevBlue = gameobj.GetComponent<Renderer> ().material.color.b;
 
 		for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / fadingTime){
+			
 
 			DMXData [DMX_startAddress] = (byte)(Mathf.Lerp(prevRed, fadeToColor[0], t)*255);
 			DMXData [DMX_startAddress + 1] = (byte)(Mathf.Lerp(prevGreen, fadeToColor[1], t)*255);
@@ -80,6 +81,7 @@ public class DMXout : MonoBehaviour {
 				1
 			);
 			gameobj.GetComponent<Renderer> ().material.color = newColor;
+			Debug.Log ("Send value for " + gameobj.name);
 
 			yield return null;
 		}

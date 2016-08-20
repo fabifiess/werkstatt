@@ -19,7 +19,6 @@ public class Arduino_in_Bohrer : MonoBehaviour {
 	private bool inAction = false;
 
 	private int receivedVal = -1;
-	private int prevReceivedVal = -1;
 
 	void Awake(){
 		sp = new SerialPort(serialport,9600);
@@ -70,7 +69,6 @@ public class Arduino_in_Bohrer : MonoBehaviour {
 		// Debug.Log ("receivedVal: " + receivedVal);
 		dmxOut.DMXData [DMX_feedback_address] = (byte)(155);
 		StartCoroutine (dmxOut.fadeColor (bohrer_lamp, DMX_lamp_startAddress, dmxOut.white, 0.5f));
-		prevReceivedVal = receivedVal;
 		startTime = Time.time;
 		inAction = true;
 	}

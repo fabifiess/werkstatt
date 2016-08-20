@@ -1,21 +1,21 @@
-/Users/MXO-GFX/Documents/Github/Werkstatt001/Temp/bin/Debug/UnityEngine.dll
-/Users/MXO-GFX/Documents/Github/Werkstatt001/Temp/bin/Debug/UnityEditor.dll
-/Users/MXO-GFX/Documents/Github/Werkstatt001/Temp/bin/Debug/UnityEngine.UI.dll
-/Users/MXO-GFX/Documents/Github/Werkstatt001/Temp/bin/Debug/UnityEngine.Networking.dll
-/Users/MXO-GFX/Documents/Github/Werkstatt001/Temp/bin/Debug/Liteshared.dll
-/Users/MXO-GFX/Documents/Github/Werkstatt001/Temp/bin/Debug/ArtNet.dll
-/Users/MXO-GFX/Documents/Github/Werkstatt001/Temp/bin/Debug/Assembly-CSharp-firstpass.dll
-/Users/MXO-GFX/Documents/Github/Werkstatt001/Temp/bin/Debug/Assembly-CSharp-firstpass.dll.mdb
-/Users/MXO-GFX/Documents/Github/Werkstatt001/Temp/bin/Debug/Mono.Cecil.dll
-/Users/MXO-GFX/Documents/Github/Werkstatt001/Temp/bin/Debug/Unity.SerializationLogic.dll
-/Users/MXO-GFX/Documents/Github/Werkstatt001/Temp/bin/Debug/Unity.DataContract.dll
-/Users/MXO-GFX/Documents/Github/Werkstatt001/Temp/bin/Debug/ICSharpCode.NRefactory.dll
-/Users/MXO-GFX/Documents/Github/Werkstatt001/Temp/bin/Debug/Unity.UNetWeaver.dll
-/Users/MXO-GFX/Documents/Github/Werkstatt001/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
-/Users/MXO-GFX/Documents/Github/Werkstatt001/Temp/bin/Debug/Unity.CecilTools.dll
-/Users/MXO-GFX/Documents/Github/Werkstatt001/Temp/bin/Debug/Mono.Cecil.Pdb.dll
-/Users/MXO-GFX/Documents/Github/Werkstatt001/Temp/bin/Debug/Mono.Cecil.Mdb.dll
-/Users/MXO-GFX/Documents/Github/Werkstatt001/Temp/bin/Debug/Assembly-CSharp.dll.mdb
-/Users/MXO-GFX/Documents/Github/Werkstatt001/Temp/bin/Debug/Assembly-CSharp.dll
-/Users/MXO-GFX/Documents/Github/Werkstatt001/obj/Debug/Assembly-CSharp.dll
-/Users/MXO-GFX/Documents/Github/Werkstatt001/obj/Debug/Assembly-CSharp.dll.mdb
+/Users/Christel/Documents/Unity Projects/Werkstatt/Temp/bin/Debug/Assembly-CSharp.dll.mdb
+/Users/Christel/Documents/Unity Projects/Werkstatt/Temp/bin/Debug/Assembly-CSharp.dll
+/Users/Christel/Documents/Unity Projects/Werkstatt/obj/Debug/Assembly-CSharp.dll
+/Users/Christel/Documents/Unity Projects/Werkstatt/obj/Debug/Assembly-CSharp.dll.mdb
+/Users/Christel/Documents/Unity Projects/Werkstatt/Temp/bin/Debug/UnityEngine.dll
+/Users/Christel/Documents/Unity Projects/Werkstatt/Temp/bin/Debug/UnityEditor.dll
+/Users/Christel/Documents/Unity Projects/Werkstatt/Temp/bin/Debug/UnityEngine.Networking.dll
+/Users/Christel/Documents/Unity Projects/Werkstatt/Temp/bin/Debug/UnityEngine.UI.dll
+/Users/Christel/Documents/Unity Projects/Werkstatt/Temp/bin/Debug/ArtNet.dll
+/Users/Christel/Documents/Unity Projects/Werkstatt/Temp/bin/Debug/Liteshared.dll
+/Users/Christel/Documents/Unity Projects/Werkstatt/Temp/bin/Debug/Assembly-CSharp-firstpass.dll
+/Users/Christel/Documents/Unity Projects/Werkstatt/Temp/bin/Debug/Assembly-CSharp-firstpass.dll.mdb
+/Users/Christel/Documents/Unity Projects/Werkstatt/Temp/bin/Debug/Mono.Cecil.dll
+/Users/Christel/Documents/Unity Projects/Werkstatt/Temp/bin/Debug/Unity.SerializationLogic.dll
+/Users/Christel/Documents/Unity Projects/Werkstatt/Temp/bin/Debug/Unity.DataContract.dll
+/Users/Christel/Documents/Unity Projects/Werkstatt/Temp/bin/Debug/ICSharpCode.NRefactory.dll
+/Users/Christel/Documents/Unity Projects/Werkstatt/Temp/bin/Debug/Unity.UNetWeaver.dll
+/Users/Christel/Documents/Unity Projects/Werkstatt/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+/Users/Christel/Documents/Unity Projects/Werkstatt/Temp/bin/Debug/Unity.CecilTools.dll
+/Users/Christel/Documents/Unity Projects/Werkstatt/Temp/bin/Debug/Mono.Cecil.Pdb.dll
+/Users/Christel/Documents/Unity Projects/Werkstatt/Temp/bin/Debug/Mono.Cecil.Mdb.dll

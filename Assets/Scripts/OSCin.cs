@@ -15,7 +15,7 @@ public class OSCin : MonoBehaviour {
 
 	public string fader1 = "/1/fader1";
 	public int thisPort = 8000;
-	private string thatIpAddress;
+	private 	string thatIpAddress;
 	private int thatPort;
 
 	private float duration = 0.5f;
@@ -88,7 +88,7 @@ public class OSCin : MonoBehaviour {
 						if ((currentTime  - bigTrigger) < duration) {
 							if (bigVal == true) {
 								counter++;
-								//Debug.Log ("decreased !! " + counter);
+								Debug.Log ("decreased !! " + counter);
 								bigVal = false;
 								littleTrigger = Time.time;
 								//Debug.Log ("littleTrigger - bigTrigger: " + (littleTrigger - bigTrigger));
@@ -106,7 +106,7 @@ public class OSCin : MonoBehaviour {
 						if ((currentTime  - littleTrigger) < duration) {
 							if (littleVal == true) {
 								counter++;
-								//Debug.Log ("increased !! " + counter);
+								Debug.Log ("increased !! " + counter);
 								littleVal = false;
 								bigTrigger = Time.time;
 								//Debug.Log ("bigTrigger - littleTrigger: " + (bigTrigger - littleTrigger));
